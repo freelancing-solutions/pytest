@@ -640,10 +640,9 @@ def approx(expected, rel=None, abs=None, nan_ok: bool = False) -> ApproxBase:
 
     - ``unittest.TestCase.assertAlmostEqual(a, b)``: True if ``a`` and ``b``
       are within an absolute tolerance of ``1e-7``.  No relative tolerance is
-      considered and the absolute tolerance cannot be changed, so this function
-      is not appropriate for very large or very small numbers.  Also, it's only
-      available in subclasses of ``unittest.TestCase`` and it's ugly because it
-      doesn't follow PEP8.  `More information...`__
+      considered , so this function is not appropriate for very large or very
+      small numbers.  Also, it's only available in subclasses of ``unittest.TestCase``
+      and it's ugly because it doesn't follow PEP8.  `More information...`__
 
       __ https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertAlmostEqual
 
@@ -653,6 +652,14 @@ def approx(expected, rel=None, abs=None, nan_ok: bool = False) -> ApproxBase:
       is asymmetric and you can think of ``b`` as the reference value.  In the
       special case that you explicitly specify an absolute tolerance but not a
       relative tolerance, only the absolute tolerance is considered.
+
+    .. note::
+
+        ``approx`` can handle numpy arrays, but we recommend the
+        specialised test helpers in `numpy.testing`__ if you need
+        support for comparisons, NaNs, or ULP-based tolerances.
+
+        __ https://numpy.org/doc/stable/reference/routines.testing.html
 
     .. warning::
 
